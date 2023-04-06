@@ -5,7 +5,7 @@
 [Android-PickerView](https://github.com/Bigkoo/Android-PickerView)
 
 
-简化了代码，用kotlin重新撸了一遍.特点是轻便，易定制，易魔改。
+简化了代码，用kotlin重新撸了一遍。 特点是轻便，易定制，易魔改。
 
 ### [English Readme](https://github.com/jiangnan44/WheelView#readme)
 
@@ -16,7 +16,7 @@
 
 ## 怎么用？
 
-把 WheelView 源文件 和 attrs 里面定义的属性copy到你的项目，直接开干.
+把 WheelView 源文件 和 attrs 里面定义的属性copy到你的项目，直接开干。
 
 写了两个示例，一个用普通的DialogFragment，可用于对付天朝各种牛逼射技师和产品；一个用BottomSheetDialogFragment写的，直接禁用了系统的拖拽效果，想保留效果的，自行重写BottomSheetBehavior解决，要搞一堆事，我就不管了
 
@@ -53,7 +53,7 @@ private fun showWeekDialog(view: View?) {
     }
 ```
 
-自定义UI的话，看源码自己简单改改layout里的一些属性即可.
+自定义UI的话，看源码自己简单改改layout里的一些属性即可。
 
 
 ## 支持的属性
