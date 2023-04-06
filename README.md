@@ -1,11 +1,17 @@
 # WheelView
 
-This WheelView is from here  [Android-PickerView](https://github.com/Bigkoo/Android-PickerView)
-I just simplify it in some place.
+This WheelView is original from here
+
+[Android-PickerView](https://github.com/Bigkoo/Android-PickerView)
+
+
+I just simplify it and rewrite with kotlin.
+
 
 
 ## Effect Preview
 
+<img src="preview.gif" alt="Screenshot">
 
 
 ## How to use
@@ -14,7 +20,9 @@ Just copy the source file WheelView and associate attrs to your project and fire
 
 For demonstrate, I'v wrote two examples you might need:
 
-PickWeekdayDialog (use DialogFragment, which maybe useful if you are so lucky that got some genius Chinese UI designers)
+**PickWeekdayDialog**
+(use DialogFragment, which maybe useful if you are so lucky that got some genius Chinese UI designers)
+
 ```kotlin
 
 private var selectWeekday = "Wednesday"
@@ -30,7 +38,7 @@ private fun showWeekDialog(view: View?) {
 }
 ```
 
-And PickDateDialog (use BottomSheetDialogFragment, which you may have to solve scrolling problem if you have more than one scrolling child view)
+**PickDateDialog** (use BottomSheetDialogFragment, which you may have to solve scrolling problem if you have more than one scrolling child view)
 ```kotlin
     private var selectDate = "2023-5-12"
     private fun showDateDialog(view: View?) {
@@ -46,7 +54,7 @@ And PickDateDialog (use BottomSheetDialogFragment, which you may have to solve s
     }
 ```
 
-For custom UI, copy the resource file you needed, screw it the way you like.
+For custom UI, copy the resource files you needed, screw it the way you like.
 
 Check the details in source code.
 
@@ -73,18 +81,18 @@ Check the details in source code.
     </declare-styleable>
 ```
 
-textSize:the content text size, you can use setCenterTextTypeface() or setSubTextTypeface() to change typeface
-lineSpacingMultiplier:use to adjust space between items
-centerTextColor:the color of center text
-centerTextMidWeight:true to make center text a fake middle weight,default is true
-subTextColor:the color of text other than center text
-subTextGradient:true to use alpha gradient effect for sub items
-dividerColor:the color of center divider
-dividerVisible:true to show center divider,default is false
-canLoop:if those items can loop,default is false
-label:a tag text attaches behind center text
-contentBias:optional to adjust items position in horizontal direction,default is center
-labelBias:optional to adjust label position in horizontal direction,default is align end
-visibleItemCount:the total visible item count,should be odd
+*   textSize:the content text size, you can use setCenterTextTypeface() or setSubTextTypeface() to change typeface
+*   lineSpacingMultiplier:use to adjust space between items
+*   centerTextColor:the color of center text
+*   centerTextMidWeight:true to make center text a fake middle weight,default is true
+*   subTextColor:the color of text other than center text
+*   subTextGradient:true to use alpha gradient effect for sub items
+*   dividerColor:the color of center divider
+*   dividerVisible:true to show center divider,default is false
+*   canLoop:if those items can loop,default is false
+*   label:a tag text attaches behind center text
+*   contentBias:optional to adjust items position in horizontal direction,default is center
+*   labelBias:optional to adjust label position in horizontal direction,default is align end
+*   visibleItemCount:the total visible item count,should be odd
 
 
