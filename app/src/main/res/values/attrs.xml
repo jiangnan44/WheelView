@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+    <declare-styleable name="WheelView">
+        <attr name="android:textSize" />
+        <attr name="android:lineSpacingMultiplier" />
+
+        <attr name="subTextColor" format="color" />
+        <attr name="subTextGradient" format="boolean" />
+        <attr name="centerTextColor" format="color" />
+        <attr name="centerTextMidWeight" format="boolean" />
+        <attr name="dividerColor" format="color" />
+        <attr name="dividerVisible" format="boolean" />
+        <attr name="canLoop" format="boolean" />
+        <attr name="label" format="string" />
+        <attr name="contentBias" format="float" />
+        <attr name="labelBias" format="float" />
+        <!--        should be odd-->
+        <attr name="visibleItemCount" format="integer" />
+    </declare-styleable>
+</resources>
