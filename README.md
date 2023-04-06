@@ -7,7 +7,7 @@ This WheelView is original from here
 
 I just simplify it and rewrite with kotlin.
 
-### [中文说明](https://github.com/jiangnan44/WheelView/edit/main/README_ZH.md)
+### [中文说明](https://github.com/jiangnan44/WheelView/blob/main/README_ZH.md)
 
 ## Effect Preview
 
