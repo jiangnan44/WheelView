@@ -14,6 +14,7 @@
         <attr name="dividerVisible" format="boolean" />
         <attr name="canLoop" format="boolean" />
         <attr name="label" format="string" />
+        <attr name="subTextXOffset" format="float" />
         <attr name="contentBias" format="float" />
         <attr name="labelBias" format="float" />
         <!--        should be odd-->

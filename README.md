@@ -94,5 +94,6 @@ Check the details in source code.
 *   contentBias:optional to adjust items position in horizontal direction,default is center
 *   labelBias:optional to adjust label position in horizontal direction,default is align end
 *   visibleItemCount:the total visible item count,should be odd
+*   subTextXOffset:the x-axis offset of the items other than center text
 
 

@@ -7,6 +7,7 @@ import android.os.Handler
 import android.os.Looper
 import android.os.Message
 import android.util.AttributeSet
+import android.util.Log
 import android.view.GestureDetector
 import android.view.MotionEvent
 import android.view.View
@@ -62,6 +63,7 @@ class WheelView : View {
     private var _bottomDividerY = 0f
     private var _totalScrollY = 0f
     private var _centerContentOffset = 0f
+    private var _subContentXOffset = 0f
 
 
     private lateinit var subTextPaint: Paint
@@ -84,6 +86,7 @@ class WheelView : View {
             _labelBias = a.getFloat(R.styleable.WheelView_labelBias, 1f)
             _label = a.getString(R.styleable.WheelView_label)
             _isAlphaGradient = a.getBoolean(R.styleable.WheelView_subTextGradient, false)
+            _subContentXOffset = a.getFloat(R.styleable.WheelView_subTextXOffset, 0f)
             centerTextMidWeight = a.getBoolean(R.styleable.WheelView_centerTextMidWeight, true)
             _textSize = a.getDimensionPixelOffset(
                 R.styleable.WheelView_android_textSize,
@@ -272,12 +275,21 @@ class WheelView : View {
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
         if (noData()) return super.onMeasure(widthMeasureSpec, heightMeasureSpec)
 
-        _wvWidth = MeasureSpec.getSize(widthMeasureSpec)
 
         val hm = MeasureSpec.getMode(heightMeasureSpec)
+        val wm = MeasureSpec.getMode(widthMeasureSpec)
         measureTextWidthHeight()
+        val mw = MeasureSpec.getSize(widthMeasureSpec)
+        if (wm == MeasureSpec.EXACTLY) {
+            _wvWidth = mw
+        } else {
+            _wvWidth = _maxTextWidth + paddingStart + paddingEnd
+        }
+
 
         val halfCir = _itemHeight * (_visibleItemCount - 1)
+
+
         _radius = (halfCir / Math.PI).toInt()
         val nh = _radius.shl(1)
 
@@ -354,6 +366,7 @@ class WheelView : View {
                     invalidate()
                 }
             }
+
             else -> {
                 if (noConsume) {
                     if (System.currentTimeMillis() - startTime > 120L) {
@@ -468,9 +481,13 @@ class WheelView : View {
                     clipRect(0f, 0f, _wvWidth.toFloat(), _itemHeight)
                     scale(1f, (sin(radian) * SCALE_CONTENT))
                     updateOutPainStyle(offsetCoefficient, angle)
+                    Log.d(
+                        TAG,
+                        "onDraw offsetCoefficient =$offsetCoefficient selectedItem=${_subContentXOffset * offsetCoefficient}"
+                    )
                     drawText(
                         content,
-                        contentX,
+                        contentX + _subContentXOffset * offsetCoefficient,
                         _maxTextHeight.toFloat(),
                         subTextPaint
                     )
@@ -537,6 +554,15 @@ class WheelView : View {
     }
 
     private fun updateOutPainStyle(offsetCoefficient: Float, angle: Float) {
+
+        val multiplier =
+            0.5f * if (_subContentXOffset > 0) 1f else if (_subContentXOffset < 0) -1f else 0f
+
+        subTextPaint.textSkewX = multiplier * offsetCoefficient * (if (angle > 0) {
+            -1f
+        } else {
+            1f
+        })
 
         subTextPaint.alpha = if (_isAlphaGradient) {
             ((90f - abs(angle)) / 90f * 255).toInt()
@@ -634,7 +660,6 @@ class WheelView : View {
                 _maxTextHeight = txtHeight
             }
         }
-        _maxTextHeight += 2
         _itemHeight = _lineSpacingMultiplier * _maxTextHeight
     }
 

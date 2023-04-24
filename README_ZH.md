@@ -91,5 +91,6 @@ private fun showWeekDialog(view: View?) {
 *   contentBias:可用于条目的水平位置调整，默认条目居中
 *   labelBias:可用于label水平位置调，默认label居尾对齐
 *   visibleItemCount:总共可见条目总数，需要设成奇数
+*   subTextXOffset:两边条目X方向偏移
 
 
